@@ -1,6 +1,6 @@
-# VCRK Serviços Digitais
+# VCRK Soluções Digitais
 
-Landing page da VCRK Serviços Digitais, de Nova Friburgo (RJ): organização de dados para o comércio, posicionamento digital para prestadores de serviço e automação com IA.
+Landing page da VCRK Soluções Digitais, de Nova Friburgo (RJ): organização de dados para o comércio, posicionamento digital para prestadores de serviço e automação com IA.
 
 Site no ar: https://vcrk.com.br/
 
