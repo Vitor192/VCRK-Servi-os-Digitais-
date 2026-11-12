@@ -82,10 +82,8 @@ Não há instalação nem etapa de build.
 ## Contato
 
 - WhatsApp: https://wa.me/message/VXHAGG4N7LURD1
-- Instagram da VCRK: https://www.instagram.com/vcrk.digital?rpxt=bjdkbWNsa210aGxu
-- Instagram de Vitor: https://www.instagram.com/vitor.cunnha09/
-- LinkedIn da VCRK: https://www.linkedin.com/company/vcrk-servi%C3%A7osdigitais/?viewAsMember=true
-- LinkedIn de Vitor: https://www.linkedin.com/in/vitorcunnha/
+- Instagram: https://www.instagram.com/vcrk.digital
+- LinkedIn: https://www.linkedin.com/company/vcrk-servi%C3%A7osdigitais/
 - E-mail: vitor.cunha@vcrk.com.br
 
 ## Fundador
