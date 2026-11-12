@@ -548,7 +548,7 @@ body{margin:0}img{max-width:100%}[hidden]{display:none!important}
         </a>
         <div class="contact">
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></svg></span>
-          <span><span class="lbl" style="display:block">E-mail</span><a class="val" href="mailto:vcrk.digital@gmail.com" id="mailText">vcrk.digital@gmail.com</a></span>
+          <span><span class="lbl" style="display:block">E-mail</span><a class="val" href="mailto:vitor.cunha@vcrk.com.br" id="mailText">vitor.cunha@vcrk.com.br</a></span>
           <button class="copy" id="copyMail" type="button">Copiar</button>
         </div>
       </div>
@@ -597,7 +597,7 @@ body{margin:0}img{max-width:100%}[hidden]{display:none!important}
     var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
   }
   copyBtn.addEventListener('click', function () {
-    var text = 'vcrk.digital@gmail.com';
+    var text = 'vitor.cunha@vcrk.com.br';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () { toast('E-mail copiado'); }, function () { selectMail(); toast('Selecionado, use copiar do aparelho'); });
     } else { selectMail(); toast('Selecionado, use copiar do aparelho'); }

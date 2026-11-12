@@ -74,7 +74,7 @@ Não há instalação nem etapa de build.
 | Cores | Bloco `:root` no início do `<style>` |
 | Número do WhatsApp | Link `https://wa.me/message/VXHAGG4N7LURD1` (aparece em vários pontos) |
 | Instagram e LinkedIn | Seção `id="contato"` |
-| E-mail | `vcrk.digital@gmail.com` (link e botão "Copiar") |
+| E-mail | `vitor.cunha@vcrk.com.br` (link e botão "Copiar") |
 | Endereço | Seção `id="localizacao"` |
 | Passos de contratação | Seção `id="como-funciona"` |
 
@@ -83,7 +83,7 @@ Não há instalação nem etapa de build.
 - WhatsApp: https://wa.me/message/VXHAGG4N7LURD1
 - Instagram: https://www.instagram.com/vitor.cunnha09/
 - LinkedIn: https://www.linkedin.com/in/vitorcunnha/
-- E-mail: vcrk.digital@gmail.com
+- E-mail: vitor.cunha@vcrk.com.br
 
 ## Fundador
 
