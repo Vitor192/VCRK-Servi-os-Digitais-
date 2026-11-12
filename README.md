@@ -25,7 +25,7 @@ A VCRK ajuda negócios a se organizar e a aparecer no digital. O site atende tr�
 
 ## Tecnologias
 
-- HTML, CSS e JavaScript puros, em um único arquivo
+- HTML, CSS (transformações 3D) e JavaScript puros, em um único arquivo
 - Fontes Montserrat e DM Sans (Google Fonts)
 - Imagens e ícones embutidos no próprio arquivo
 - Hospedagem na Vercel, com domínio `vcrk.com.br`
@@ -33,6 +33,7 @@ A VCRK ajuda negócios a se organizar e a aparecer no digital. O site atende tr�
 ## Características
 
 - Layout pensado primeiro para celular, com ajuste para tablet e notebook
+- Efeitos em 3D: cena com símbolo em órbita no topo, cartões que entram em 3D ao rolar e fundo com profundidade (sem bibliotecas externas)
 - Tema azul marinho com detalhes em cobre e prata, seguindo a identidade da logo
 - Botão flutuante de WhatsApp sempre visível
 - Menu que vira botão no celular
