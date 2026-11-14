@@ -455,6 +455,104 @@ main, footer { position: relative; z-index: 1; }
 .foot-ig:hover { color: var(--copper); }
 footer strong { color: var(--fg); font-weight: 700; }
 @media (max-width: 699px) { footer { padding-bottom: calc(28px + 72px + env(safe-area-inset-bottom, 0px)); } }
+
+/* ===== Área de orçamento ===== */
+[hidden] { display: none !important; }
+.orc-head { max-width: 64ch; }
+.orc-form, .orc-result { scroll-margin-top: 84px; }
+.orc-form {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  padding: clamp(18px, 4vw, 38px); display: grid; gap: 22px; min-width: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 24px 50px -28px rgba(0, 0, 0, .8);
+}
+.orc-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.orc-steps li { display: grid; justify-items: start; gap: 8px; font-family: var(--font-display); font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); min-width: 0; }
+.orc-steps .num { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--line); font-size: .9rem; letter-spacing: 0; }
+.orc-steps .num svg { width: 16px; height: 16px; display: none; }
+.orc-steps li.is-active { color: var(--fg); }
+.orc-steps li.is-active .num { border-color: var(--copper); color: var(--copper); box-shadow: 0 0 0 4px rgba(216, 149, 108, .18); }
+.orc-steps li.is-done { color: var(--silver); }
+.orc-steps li.is-done .num { background: var(--copper); border-color: var(--copper); color: var(--btn-fg); }
+.orc-steps li.is-done .num span { display: none; }
+.orc-steps li.is-done .num svg { display: block; }
+.orc-progress { height: 4px; border-radius: 99px; background: var(--bg-alt); overflow: hidden; }
+.orc-progress i { display: block; height: 100%; width: 33.34%; background: linear-gradient(90deg, var(--copper), var(--silver)); transition: width .45s ease; }
+
+.orc-pane { display: none; gap: 20px; min-width: 0; }
+.orc-pane.is-active { display: grid; animation: paneIn .5s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes paneIn { from { opacity: 0; transform: perspective(900px) translate3d(26px, 0, -60px) rotateY(-10deg); } to { opacity: 1; transform: none; } }
+.orc-pane h3 { font-size: 1.35rem; font-weight: 700; outline: none; }
+.orc-pane > p.pane-sub { color: var(--muted); margin-top: -10px; }
+
+.field { display: grid; gap: 8px; min-width: 0; }
+.field > label, .field > .lbl { font-weight: 600; font-size: .95rem; }
+.field .req { color: var(--copper); }
+.field .hint { color: var(--muted); font-size: .86rem; }
+.input {
+  width: 100%; min-height: 50px; background: var(--bg-alt); color: var(--fg); font: inherit; font-size: 16px;
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 13px 14px;
+}
+.input::placeholder { color: var(--muted); opacity: .75; }
+.input:focus { outline: none; border-color: var(--copper); box-shadow: 0 0 0 3px rgba(216, 149, 108, .28); }
+textarea.input { min-height: 140px; resize: vertical; line-height: 1.5; }
+.is-invalid, .input[aria-invalid="true"] { border-color: #ff8f80; }
+.two { display: grid; gap: 18px; }
+@media (min-width: 700px) { .two { grid-template-columns: 1fr 1fr; } }
+
+.pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.pill { position: relative; }
+.pill input, .opt input, .svc-main input, .sub input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.pill span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--bg-alt); cursor: pointer; transition: border-color .2s, background .2s; }
+.pill input:checked + span { border-color: var(--copper); background: rgba(216, 149, 108, .16); color: var(--fg); font-weight: 600; }
+.pill input:focus-visible + span, .opt input:focus-visible ~ .opt-box, .svc-main input:focus-visible ~ .tick, .sub input:focus-visible ~ .tick { outline: 3px solid var(--copper); outline-offset: 2px; }
+
+.svc-grid { display: grid; gap: 14px; }
+@media (min-width: 760px) { .svc-grid { grid-template-columns: 1fr 1fr; } .svc-grid .svc:last-child { grid-column: 1 / -1; } }
+.svc { border: 1.5px solid var(--line); border-radius: 14px; background: var(--bg-alt); padding: 16px; display: grid; gap: 14px; align-content: start; min-width: 0; transition: border-color .2s, box-shadow .25s; }
+.svc.is-on { border-color: var(--copper); box-shadow: 0 0 0 3px rgba(216, 149, 108, .16), 0 18px 34px -22px rgba(0, 0, 0, .8); }
+.svc-main { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr) 26px; gap: 14px; align-items: start; cursor: pointer; }
+.svc-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--surface); color: var(--copper); }
+.svc-ico svg { width: 24px; height: 24px; }
+.svc-txt { display: grid; gap: 6px; min-width: 0; }
+.svc-txt b { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; line-height: 1.25; }
+.svc-txt span.for { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--copper); font-family: var(--font-display); font-weight: 600; }
+.svc-txt p { color: var(--muted); font-size: .94rem; }
+.tick { width: 26px; height: 26px; border: 1.5px solid var(--silver); border-radius: 8px; display: grid; place-items: center; color: transparent; transition: background .2s, border-color .2s; }
+.tick svg { width: 16px; height: 16px; }
+.svc.is-on > .svc-main .tick, .sub.is-on .tick { background: var(--copper); border-color: var(--copper); color: var(--btn-fg); }
+.svc-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; color: var(--muted); font-size: .92rem; }
+.svc-list b { color: var(--fg); font-weight: 600; }
+.svc-sub { display: none; gap: 10px; padding-left: 58px; }
+.svc.is-on .svc-sub { display: grid; }
+.sub { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 26px; gap: 12px; align-items: start; border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; background: var(--surface); cursor: pointer; }
+.sub.is-on { border-color: var(--copper); }
+.sub b { display: block; font-weight: 700; margin-bottom: 2px; }
+.sub small { color: var(--muted); font-size: .88rem; line-height: 1.45; display: block; }
+@media (max-width: 480px) { .svc-sub { padding-left: 0; } }
+
+.opts { display: grid; gap: 10px; }
+.opt { position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; align-items: center; border: 1.5px solid var(--line); border-radius: 12px; padding: 14px; background: var(--bg-alt); cursor: pointer; }
+.opt-box { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--silver); display: grid; place-items: center; }
+.opt input:checked ~ .opt-box { border-color: var(--copper); background: radial-gradient(circle, var(--copper) 0 45%, transparent 50%); }
+.opt:has(input:checked) { border-color: var(--copper); background: rgba(216, 149, 108, .12); }
+
+.orc-error { color: #ff9d8f; font-weight: 500; background: rgba(255, 143, 128, .1); border: 1px solid rgba(255, 143, 128, .4); border-radius: 12px; padding: 12px 14px; }
+.orc-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+.orc-actions .btn { flex: 1 1 160px; }
+.orc-actions .spacer { flex: 1 1 0; }
+.orc-note { color: var(--muted); font-size: .92rem; display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+.orc-note svg { width: 20px; height: 20px; color: var(--copper); margin-top: 2px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.orc-result { background: var(--surface); border: 1px solid rgba(224, 162, 122, .5); border-radius: 18px; padding: clamp(22px, 5vw, 40px); display: grid; gap: 18px; min-width: 0; animation: paneIn .6s cubic-bezier(.2, .7, .2, 1) both; }
+.orc-result .ok-ico { width: 58px; height: 58px; border-radius: 50%; background: var(--copper); color: var(--btn-fg); display: grid; place-items: center; box-shadow: 0 0 0 8px rgba(216, 149, 108, .18); }
+.orc-result .ok-ico svg { width: 28px; height: 28px; }
+.orc-result h3 { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 800; }
+.orc-result p { color: var(--muted); max-width: 62ch; }
+.orc-result p strong { color: var(--fg); }
+.sum { white-space: pre-wrap; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 12px; padding: 16px; font-size: .92rem; color: var(--fg); overflow-wrap: anywhere; line-height: 1.55; }
+.orc-toast { position: fixed; left: 50%; transform: translateX(-50%); z-index: 80; bottom: calc(90px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: .9rem; font-weight: 500; max-width: calc(100% - 32px); }
+@media (prefers-reduced-motion: reduce) { .orc-pane.is-active, .orc-result { animation: none; } .orc-progress i { transition: none; } }
 </style>
 
 </head>
@@ -484,7 +582,8 @@ footer strong { color: var(--fg); font-weight: 700; }
       <a href="#fundador">Fundador</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#localizacao">Localização</a>
-      <a class="cta" href="#contato">Contato</a>
+      <a href="#contato">Contato</a>
+      <a class="cta" href="#orcamento">Orçamento</a>
     </nav>
   </div>
 </header>
@@ -561,7 +660,7 @@ footer strong { color: var(--fg); font-weight: 700; }
           <ul class="checks">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Posicionamento no Instagram</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Perfil comercial no WhatsApp</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Google Empresarial</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Perfil da Empresa no Google</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Catálogo de serviços no WhatsApp Business</span></li>
           </ul>
           <p class="subhead">Segmentos atendidos</p>
@@ -668,6 +767,163 @@ footer strong { color: var(--fg); font-weight: 700; }
           <p>Faço o lançamento e a entrega final do projeto na data prevista, com suporte caso surja qualquer dúvida sobre o trabalho.</p>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <section class="band" id="orcamento">
+    <div class="wrap">
+      <div class="section-head orc-head">
+        <p class="eyebrow">Orçamento</p>
+        <h2 class="h2">Monte o seu orçamento em 3 passos.</h2>
+        <p class="lead">Conte sobre o seu negócio, escolha as soluções que fazem sentido e descreva o que você precisa. Com isso, a VCRK prepara uma proposta sob medida.</p>
+      </div>
+      <form class="orc-form" id="orcForm" novalidate autocomplete="on">
+        <ol class="orc-steps" aria-label="Etapas do orçamento">
+          <li class="is-active"><span class="num"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Seus dados</li>
+          <li><span class="num"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Soluções</li>
+          <li><span class="num"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Detalhes</li>
+        </ol>
+        <div class="orc-progress" aria-hidden="true"><i></i></div>
+
+        <div class="orc-pane is-active" role="group" aria-labelledby="orcH1">
+          <h3 id="orcH1" tabindex="-1">Informações básicas</h3>
+          <div class="field">
+            <label for="orcNome">Nome completo / Nome da empresa <span class="req">*</span></label>
+            <input class="input" id="orcNome" name="nome" type="text" autocomplete="name" placeholder="Ex.: Maria Souza ou Padaria Pão Quente" required>
+          </div>
+          <div class="two">
+            <div class="field">
+              <label for="orcEmail">E-mail <span class="req">*</span></label>
+              <input class="input" id="orcEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="voce@empresa.com.br" required>
+            </div>
+            <div class="field">
+              <label for="orcWhats">WhatsApp <span class="req">*</span></label>
+              <input class="input" id="orcWhats" name="whatsapp" type="tel" autocomplete="tel-national" inputmode="numeric" placeholder="(22) 99999-9999" maxlength="15" required>
+            </div>
+          </div>
+          <div class="field" role="radiogroup" aria-labelledby="orcSegLbl">
+            <span class="lbl" id="orcSegLbl">Segmento da empresa <span class="req">*</span></span>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="segmento" value="Restaurante"><span>Restaurante</span></label>
+              <label class="pill"><input type="radio" name="segmento" value="Prestador de Serviços"><span>Prestador de Serviços</span></label>
+              <label class="pill"><input type="radio" name="segmento" value="Comércio"><span>Comércio</span></label>
+              <label class="pill"><input type="radio" name="segmento" value="Médio/Grande Porte"><span>Médio/Grande Porte</span></label>
+              <label class="pill"><input type="radio" name="segmento" value="Outro"><span>Outro</span></label>
+            </div>
+          </div>
+          <div class="field" id="orcSegOtherWrap" hidden>
+            <label for="orcSegOther">Qual é o segmento?</label>
+            <input class="input" id="orcSegOther" name="segmento_outro" type="text" placeholder="Ex.: Clínica de estética">
+          </div>
+        </div>
+
+        <div class="orc-pane" role="group" aria-labelledby="orcH2">
+          <h3 id="orcH2" tabindex="-1">Quais soluções você quer?</h3>
+          <p class="pane-sub">Marque uma ou mais opções. Cada cartão explica o que a VCRK entrega.</p>
+          <div class="svc-grid">
+        <div class="svc">
+          <label class="svc-main">
+            <input type="checkbox" id="svcWeb" name="servico" value="Desenvolvimento Web" data-name="Desenvolvimento Web">
+            <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></span>
+            <span class="svc-txt"><span class="for">Sites e páginas</span><b>Desenvolvimento Web (Sites e Landing Pages)</b><p>Estruturas digitais modernas, velozes e focadas em conversão.</p></span>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          </label>
+          <div class="svc-sub">
+            <label class="sub"><input type="checkbox" name="sub" value="Site Institucional"><span><b>Site Institucional</b><small>Ideal para consolidar a autoridade da sua marca na internet e apresentar sua empresa de forma profissional.</small></span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span></label>
+            <label class="sub"><input type="checkbox" name="sub" value="Landing Page"><span><b>Landing Page</b><small>Focada em campanhas específicas de tráfego pago ou lançamento de produtos e serviços para captar leads qualificados.</small></span><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span></label>
+          </div>
+        </div>
+        <div class="svc">
+          <label class="svc-main">
+            <input type="checkbox" id="svcCard" name="servico" value="Cardápio Online" data-name="Cardápio Online">
+            <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 2-2.5 5-2.5 8H17v10"/></svg></span>
+            <span class="svc-txt"><span class="for">Para restaurantes e estabelecimentos</span><b>Cardápio Online</b><p>Uma solução prática e interativa para restaurantes, bares, lanchonetes e diversos estabelecimentos. Facilita o pedido do cliente via QR Code ou link, modernizando o atendimento e otimizando o fluxo de vendas.</p></span>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          </label>
+        </div>
+        <div class="svc">
+          <label class="svc-main">
+            <input type="checkbox" id="svcMidia" name="servico" value="Edição de Vídeo e Imagem" data-name="Edição de Vídeo e Imagem">
+            <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg></span>
+            <span class="svc-txt"><span class="for">Redes sociais e campanhas</span><b>Edição de Vídeo e Imagem</b><p>Produção visual com acabamento profissional para elevar o padrão estético da sua marca, engajar seguidores e destacar seus produtos ou serviços nas redes sociais.</p></span>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          </label>
+        </div>
+        <div class="svc">
+          <label class="svc-main">
+            <input type="checkbox" id="svcContrato" name="servico" value="Contratos Personalizados" data-name="Contratos Personalizados">
+            <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+            <span class="svc-txt"><span class="for">Para prestadores de serviços</span><b>Contratos Personalizados</b><p>Documentos jurídicos sob medida e seguros para prestadores de serviços, garantindo clareza nas entregas, prazos, formas de pagamento e resguardo legal para o seu negócio.</p></span>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          </label>
+        </div>
+        <div class="svc">
+          <label class="svc-main">
+            <input type="checkbox" id="svcDados" name="servico" value="Análise de Dados e Business Intelligence" data-name="Análise de Dados e Business Intelligence">
+            <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V11M10 20V4M16 20v-6M2 20h20"/></svg></span>
+            <span class="svc-txt"><span class="for">Médio e grande porte</span><b>Análise de Dados (Data Analytics)</b><p>Soluções robustas para empresas de médio e grande porte que desejam organizar bases complexas (fornecedores, compradores, clientes, estoque) e transformar dados brutos em insights visuais para tomadas de decisão ágeis e assertivas.</p></span>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          </label>
+        </div>
+        <div class="svc">
+          <label class="svc-main">
+            <input type="checkbox" id="svcPos" name="servico" value="Posicionamento Digital e Presença Online" data-name="Posicionamento Digital e Presença Online">
+            <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+            <span class="svc-txt"><span class="for">Google, Instagram e WhatsApp</span><b>Posicionamento e Presença Digital</b><p>Estruturação correta da sua marca nos principais canais de contato:</p><ul class="svc-list"><li><b>Perfil da Empresa no Google:</b> otimização para aparecer nas buscas locais.</li><li><b>Instagram:</b> alinhamento de bio, identidade e link de contato.</li><li><b>WhatsApp Comercial:</b> configuração de catálogo, mensagens automáticas e fluxo de atendimento profissional.</li></ul></span>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          </label>
+        </div>
+        <div class="svc">
+          <label class="svc-main">
+            <input type="checkbox" id="svcEstr" name="servico" value="Estratégia Comercial e de Vendas" data-name="Estratégia Comercial e de Vendas">
+            <span class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></svg></span>
+            <span class="svc-txt"><span class="for">Setor comercial</span><b>Estratégia Comercial e de Vendas</b><p>Metodologias e direcionamentos práticos para estruturar o setor comercial do seu negócio, potencializando conversões e desenhando estratégias alinhadas diretamente à contratação dos nossos serviços.</p></span>
+            <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          </label>
+        </div>
+          </div>
+        </div>
+
+        <div class="orc-pane" role="group" aria-labelledby="orcH3">
+          <h3 id="orcH3" tabindex="-1">Escopo e detalhes do projeto</h3>
+          <div class="field">
+            <label for="orcObjetivo">Qual é o principal objetivo da sua empresa com este projeto no momento? <span class="req">*</span></label>
+            <textarea class="input" id="orcObjetivo" name="objetivo" placeholder="Ex.: Quero receber pedidos pelo celular e aparecer melhor no Google da minha região." required></textarea>
+          </div>
+          <div class="field" role="radiogroup" aria-labelledby="orcPrazoLbl">
+            <span class="lbl" id="orcPrazoLbl">Qual é a sua expectativa de prazo para início? <span class="req">*</span></span>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="prazo" value="Imediato / Urgente"><span class="opt-box"></span><span>Imediato / Urgente</span></label>
+              <label class="opt"><input type="radio" name="prazo" value="Nas próximas semanas"><span class="opt-box"></span><span>Nas próximas semanas</span></label>
+              <label class="opt"><input type="radio" name="prazo" value="Apenas pesquisando para o próximo mês"><span class="opt-box"></span><span>Apenas pesquisando para o próximo mês</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="hp" aria-hidden="true"><label>Não preencha este campo <input type="text" name="empresa_site" tabindex="-1" autocomplete="off"></label></div>
+        <p class="orc-error" id="orcError" role="alert" hidden></p>
+        <div class="orc-actions">
+          <button type="button" class="btn btn-ghost" id="orcBack" hidden>Voltar</button>
+          <button type="button" class="btn btn-primary" id="orcNext">Continuar</button>
+          <button type="submit" class="btn btn-wa" id="orcSend" hidden>Enviar pedido de orçamento</button>
+        </div>
+        <p class="orc-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Após o envio, nossa equipe entrará em contato via WhatsApp em até 2 horas úteis para alinhar os detalhes da sua proposta.</span></p>
+      </form>
+
+      <div class="orc-result" id="orcResult" hidden>
+        <span class="ok-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+        <h3 id="orcResTitle"></h3>
+        <p id="orcResText1"></p>
+        <p id="orcResText2"></p>
+        <div id="orcSummaryWrap"><div class="sum" id="orcSummary"></div></div>
+        <div class="orc-actions">
+          <a class="btn btn-wa" id="orcResWa" href="https://wa.me/message/VXHAGG4N7LURD1" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+          <a class="btn btn-wa" id="orcResTalk" href="https://wa.me/message/VXHAGG4N7LURD1" target="_blank" rel="noopener" hidden>Falar agora no WhatsApp</a>
+          <button type="button" class="btn btn-ghost" id="orcResCopy">Copiar resumo</button>
+          <button type="button" class="btn btn-ghost" id="orcResEdit">Editar respostas</button>
+          <button type="button" class="btn btn-ghost" id="orcResNew">Novo orçamento</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -840,6 +1096,7 @@ footer strong { color: var(--fg); font-weight: 700; }
     });
   }
   add('.section-head', 'up');
+  add('.orc-form', 'up');
   add('.about-text', 'up');
   add('.audience', function (el, i) { return el.classList.contains('ai') ? 'up' : (i % 2 ? 'right' : 'left'); }, 3);
   add('.founder-head', 'left', 4);
@@ -951,12 +1208,258 @@ footer strong { color: var(--fg); font-weight: 700; }
   }
 
   function init() { measure(); update(); }
+  window.vcrkRemeasure = init;
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', function () { measure(); schedule(); });
   window.addEventListener('load', init);
   var mb = document.getElementById('menuBtn');
   if (mb) mb.addEventListener('click', function () { window.setTimeout(init, 30); });
   init();
+})();
+
+/* ===== Orçamento: formulário em 3 etapas ===== */
+/* Para receber os pedidos automaticamente, defina o endereço do seu serviço de formulário
+   (ex.: Formspree, Web3Forms ou a sua automação) antes deste script:
+   window.VCRK_FORM_ENDPOINT = 'https://...';  Sem endereço, o cliente envia o resumo pelo WhatsApp. */
+window.VCRK_FORM_ENDPOINT = window.VCRK_FORM_ENDPOINT || '';
+/* Número comercial do WhatsApp com DDD (só dígitos, ex.: '22999999999'). Com ele, o botão abre a
+   conversa já com a mensagem pronta. Sem ele, o resumo é copiado e o link padrão do WhatsApp abre. */
+window.VCRK_WA_NUMBER = window.VCRK_WA_NUMBER || '22981513033';
+(function () {
+  var form = document.getElementById('orcForm');
+  if (!form) return;
+  var WA_LINK = 'https://wa.me/message/VXHAGG4N7LURD1';
+  var ENDPOINT = window.VCRK_FORM_ENDPOINT;
+  var WA_NUMBER = String(window.VCRK_WA_NUMBER || '').replace(/\D/g, '');
+  if (WA_NUMBER && WA_NUMBER.length <= 11) WA_NUMBER = '55' + WA_NUMBER;
+  function waUrl(text) { return WA_NUMBER ? 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text) : WA_LINK; }
+  var panes = [].slice.call(form.querySelectorAll('.orc-pane'));
+  var stepLis = [].slice.call(form.querySelectorAll('.orc-steps li'));
+  var bar = form.querySelector('.orc-progress i');
+  var back = document.getElementById('orcBack'), next = document.getElementById('orcNext'), send = document.getElementById('orcSend');
+  var errEl = document.getElementById('orcError');
+  var result = document.getElementById('orcResult');
+  var cur = 0, toastTimer, lastSummary = '';
+
+  function $(id) { return document.getElementById(id); }
+  function val(id) { return ($(id).value || '').trim(); }
+  function digits(s) { return String(s).replace(/\D/g, ''); }
+  function remeasure() { window.setTimeout(function () { if (window.vcrkRemeasure) window.vcrkRemeasure(); }, 60); }
+
+  function toast(msg) {
+    var t = $('orcToast');
+    if (!t) { t = document.createElement('div'); t.id = 'orcToast'; t.className = 'orc-toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.hidden = true; }, 2600);
+  }
+
+  /* Máscara de telefone: (21) 99999-9999 */
+  function maskPhone(v) {
+    var d = digits(v).slice(0, 11);
+    if (!d.length) return '';
+    if (d.length <= 2) return '(' + d;
+    if (d.length <= 6) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    if (d.length <= 10) return '(' + d.slice(0, 2) + ') ' + d.slice(2, 6) + '-' + d.slice(6);
+    return '(' + d.slice(0, 2) + ') ' + d.slice(2, 7) + '-' + d.slice(7);
+  }
+  $('orcWhats').addEventListener('input', function (e) { e.target.value = maskPhone(e.target.value); });
+
+  /* Soluções: marcar cartão, mostrar subopções */
+  [].forEach.call(form.querySelectorAll('.svc'), function (card) {
+    var cb = card.querySelector('.svc-main input');
+    cb.addEventListener('change', function () {
+      card.classList.toggle('is-on', cb.checked);
+      if (!cb.checked) [].forEach.call(card.querySelectorAll('.sub input'), function (s) { s.checked = false; s.closest('.sub').classList.remove('is-on'); });
+      clearInvalid(); remeasure();
+    });
+  });
+  [].forEach.call(form.querySelectorAll('.sub input'), function (s) {
+    s.addEventListener('change', function () { s.closest('.sub').classList.toggle('is-on', s.checked); clearInvalid(); });
+  });
+  [].forEach.call(form.querySelectorAll('input[name="segmento"]'), function (r) {
+    r.addEventListener('change', function () {
+      var other = $('orcSegOtherWrap'); other.hidden = r.value !== 'Outro' || !r.checked;
+      clearInvalid(); remeasure();
+    });
+  });
+
+  function clearInvalid() {
+    errEl.hidden = true;
+    [].forEach.call(form.querySelectorAll('[aria-invalid="true"]'), function (el) { el.removeAttribute('aria-invalid'); });
+    [].forEach.call(form.querySelectorAll('.is-invalid'), function (el) { el.classList.remove('is-invalid'); });
+  }
+  form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) { e.target.removeAttribute('aria-invalid'); } });
+
+  function mark(el) { if (el) el.setAttribute('aria-invalid', 'true'); }
+
+  /* Validação por etapa: devolve lista de mensagens */
+  function validate(step) {
+    var msgs = [], first = null;
+    function bad(el, m) { msgs.push(m); mark(el); if (!first && el) first = el; }
+    if (step === 0) {
+      if (val('orcNome').length < 2) bad($('orcNome'), 'Informe seu nome ou o nome da empresa.');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('orcEmail'))) bad($('orcEmail'), 'Informe um e-mail válido.');
+      var d = digits(val('orcWhats'));
+      if (d.length < 10 || d.length > 11) bad($('orcWhats'), 'Informe o WhatsApp com DDD, por exemplo (22) 99999-9999.');
+      var seg = form.querySelector('input[name="segmento"]:checked');
+      if (!seg) { msgs.push('Escolha o segmento da empresa.'); var p = form.querySelector('input[name="segmento"]'); if (!first) first = p; }
+      else if (seg.value === 'Outro' && val('orcSegOther').length < 2) bad($('orcSegOther'), 'Conte qual é o segmento da sua empresa.');
+    } else if (step === 1) {
+      var on = form.querySelectorAll('.svc-main input:checked');
+      if (!on.length) { msgs.push('Marque pelo menos uma solução.'); first = form.querySelector('.svc-main input'); }
+      var web = $('svcWeb');
+      if (web.checked && !form.querySelectorAll('.sub input:checked').length) { msgs.push('Em Desenvolvimento Web, escolha Site Institucional ou Landing Page.'); if (!first) first = form.querySelector('.sub input'); }
+    } else {
+      if (val('orcObjetivo').length < 10) bad($('orcObjetivo'), 'Conte, em poucas palavras, o objetivo do projeto.');
+      if (!form.querySelector('input[name="prazo"]:checked')) { msgs.push('Escolha a expectativa de prazo para começar.'); if (!first) first = form.querySelector('input[name="prazo"]'); }
+    }
+    return { msgs: msgs, first: first };
+  }
+  function showErrors(r) {
+    errEl.textContent = r.msgs.join(' ');
+    errEl.hidden = false;
+    if (r.first && r.first.focus) { try { r.first.focus({ preventScroll: false }); } catch (e) { r.first.focus(); } }
+  }
+
+  function go(n, user) {
+    cur = Math.max(0, Math.min(panes.length - 1, n));
+    panes.forEach(function (p, i) { p.classList.toggle('is-active', i === cur); });
+    stepLis.forEach(function (li, i) {
+      li.classList.toggle('is-active', i === cur);
+      li.classList.toggle('is-done', i < cur);
+      if (i === cur) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+    });
+    bar.style.width = ((cur + 1) / panes.length * 100) + '%';
+    back.hidden = cur === 0; next.hidden = cur === panes.length - 1; send.hidden = cur !== panes.length - 1;
+    clearInvalid();
+    if (user) {
+      var h = panes[cur].querySelector('h3'); if (h) h.focus({ preventScroll: true });
+      var top = form.getBoundingClientRect().top;
+      if (top < 70 || top > window.innerHeight * 0.4) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    remeasure(); window.setTimeout(remeasure, 600);
+  }
+  next.addEventListener('click', function () {
+    var r = validate(cur);
+    if (r.msgs.length) { showErrors(r); return; }
+    go(cur + 1, true);
+  });
+  back.addEventListener('click', function () { go(cur - 1, true); });
+  form.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'checkbox' && e.target.type !== 'radio') {
+      e.preventDefault();
+      if (cur < panes.length - 1) next.click(); else form.requestSubmit ? form.requestSubmit() : send.click();
+    }
+  });
+
+  /* Dados do pedido */
+  function collect() {
+    var servicos = [];
+    [].forEach.call(form.querySelectorAll('.svc'), function (card) {
+      var cb = card.querySelector('.svc-main input');
+      if (!cb.checked) return;
+      var name = cb.getAttribute('data-name');
+      var subs = [].map.call(card.querySelectorAll('.sub input:checked'), function (s) { return s.value; });
+      servicos.push(subs.length ? name + ' (' + subs.join(' e ') + ')' : name);
+    });
+    var seg = form.querySelector('input[name="segmento"]:checked').value;
+    if (seg === 'Outro') seg = 'Outro: ' + val('orcSegOther');
+    var tel = val('orcWhats');
+    return {
+      nome: val('orcNome'), email: val('orcEmail'), whatsapp: tel,
+      whatsapp_link: 'https://wa.me/55' + digits(tel),
+      segmento: seg, servicos: servicos,
+      objetivo: val('orcObjetivo'),
+      prazo: form.querySelector('input[name="prazo"]:checked').value,
+      origem: 'Site vcrk.com.br'
+    };
+  }
+  function firstName(n) { return n.split(/\s+/)[0]; }
+  function lines(a) { return a.map(function (s) { return '- ' + s; }).join('\n'); }
+  function clientSummary(l) {
+    return 'Olá! Quero solicitar um orçamento pelo site da VCRK Soluções Digitais.\n\n' +
+      'Nome: ' + l.nome + '\nWhatsApp: ' + l.whatsapp + '\nE-mail: ' + l.email + '\nSegmento: ' + l.segmento + '\n\n' +
+      'Soluções de interesse:\n' + lines(l.servicos) + '\n\nObjetivo: ' + l.objetivo + '\nPrazo para começar: ' + l.prazo;
+  }
+  function internalLead(l) {
+    return 'NOVO LEAD NO SITE - VCRK\n\nNome: ' + l.nome + '\nWhatsApp: ' + l.whatsapp + ' (' + l.whatsapp_link + ')\nE-mail: ' + l.email +
+      '\nSegmento: ' + l.segmento + '\n\nServiços selecionados:\n' + lines(l.servicos) + '\n\nObjetivo/Detalhes: ' + l.objetivo + '\nExpectativa de prazo: ' + l.prazo;
+  }
+  function clientScript(l) {
+    return 'Olá, ' + firstName(l.nome) + '! Aqui é a equipe da VCRK Soluções Digitais.\n\nRecebemos o seu pedido de orçamento pelo nosso site e vimos que você tem interesse em soluções voltadas para ' +
+      l.servicos[0] + '.\n\nPara darmos o próximo passo e entendermos melhor a sua demanda para preparar uma proposta certeira, você teria 5 minutinhos agora para conversarmos por aqui?';
+  }
+
+  function copyText(text, okMsg) {
+    function fallback() {
+      var s = $('orcSummary');
+      if (s) { var r = document.createRange(); r.selectNodeContents(s); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+      toast('Texto selecionado. Use copiar do aparelho.');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { toast(okMsg); }, fallback);
+    } else fallback();
+  }
+
+  function showResult(mode, lead, note) {
+    form.hidden = true; result.hidden = false;
+    var sent = mode === 'sent';
+    $('orcResTitle').textContent = sent ? 'Proposta recebida com sucesso!' : 'Falta só enviar pelo WhatsApp';
+    var p1 = $('orcResText1'), p2 = $('orcResText2');
+    if (sent) {
+      p1.innerHTML = ''; p1.appendChild(document.createTextNode('Obrigado, ')); var s1 = document.createElement('strong'); s1.textContent = firstName(lead.nome); p1.appendChild(s1);
+      p1.appendChild(document.createTextNode('! Recebemos as informações sobre o seu projeto na VCRK Soluções Digitais. Nossa equipe técnica e comercial já está analisando o seu escopo.'));
+      p2.textContent = 'Em breve, entraremos em contato pelo WhatsApp cadastrado (' + lead.whatsapp + ') para apresentar uma proposta sob medida para o seu negócio.';
+    } else {
+      p1.textContent = 'Obrigado, ' + firstName(lead.nome) + '! Montamos o resumo do seu pedido abaixo. ' + (WA_NUMBER
+        ? 'Toque em "Enviar pelo WhatsApp": a conversa com a VCRK abre com esta mensagem pronta. É só enviar.'
+        : 'Toque em "Enviar pelo WhatsApp": o resumo é copiado e o WhatsApp da VCRK abre. É só colar a mensagem e enviar.');
+      p2.textContent = note || (WA_NUMBER ? 'Se a mensagem não aparecer, toque em "Copiar resumo" e cole na conversa.' : 'Se o WhatsApp abrir sem o texto, cole a mensagem copiada.');
+    }
+    lastSummary = clientSummary(lead);
+    $('orcSummary').textContent = lastSummary;
+    $('orcResWa').href = waUrl(lastSummary);
+    $('orcSummaryWrap').hidden = sent;
+    $('orcResWa').hidden = sent; $('orcResCopy').hidden = sent; $('orcResEdit').hidden = sent;
+    $('orcResTalk').hidden = !sent;
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    remeasure(); window.setTimeout(remeasure, 700);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    for (var i = 0; i < panes.length; i++) {
+      var r = validate(i);
+      if (r.msgs.length) { go(i, true); showErrors(r); return; }
+    }
+    var lead = collect();
+    if (form.querySelector('.hp input').value) { showResult('sent', lead); return; }
+    if (!ENDPOINT) { showResult('manual', lead); return; }
+    send.disabled = true; send.textContent = 'Enviando...';
+    var payload = Object.assign({}, lead, { mensagem_interna: internalLead(lead), script_cliente: clientScript(lead) });
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function (res) {
+        send.disabled = false; send.textContent = 'Enviar pedido de orçamento';
+        if (res.ok) showResult('sent', lead);
+        else showResult('manual', lead, 'Não conseguimos enviar o pedido automaticamente. Envie o resumo pelo WhatsApp para não perder tempo.');
+      })
+      .catch(function () {
+        send.disabled = false; send.textContent = 'Enviar pedido de orçamento';
+        showResult('manual', lead, 'Não conseguimos enviar o pedido automaticamente. Envie o resumo pelo WhatsApp para não perder tempo.');
+      });
+  });
+
+  $('orcResWa').addEventListener('click', function () { copyText(lastSummary, 'Resumo copiado. Cole no WhatsApp.'); });
+  $('orcResCopy').addEventListener('click', function () { copyText(lastSummary, 'Resumo copiado.'); });
+  $('orcResEdit').addEventListener('click', function () { result.hidden = true; form.hidden = false; go(0, true); });
+  $('orcResNew').addEventListener('click', function () {
+    form.reset();
+    [].forEach.call(form.querySelectorAll('.svc, .sub'), function (c) { c.classList.remove('is-on'); });
+    $('orcSegOtherWrap').hidden = true;
+    result.hidden = true; form.hidden = false; go(0, true);
+  });
+
+  go(0, false);
 })();
 </script>
 

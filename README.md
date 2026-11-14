@@ -20,8 +20,9 @@ A VCRK ajuda negócios a se organizar e a aparecer no digital. O site atende tr�
 2. **Sobre:** os três públicos atendidos
 3. **Fundador:** Vitor Cunha, formação e experiência
 4. **Como funciona:** reunião de alinhamento, proposta e planejamento, assinatura do contrato, execução no prazo determinado e entrega no prazo previsto
-5. **Localização:** endereço e botões para o Google Maps
-6. **Contato:** WhatsApp, Instagram, LinkedIn e e-mail
+5. **Orçamento:** formulário em 3 etapas (dados, soluções e escopo); o pedido abre no WhatsApp da VCRK com a mensagem pronta
+6. **Localização:** endereço e botões para o Google Maps
+7. **Contato:** WhatsApp, Instagram, LinkedIn e e-mail
 
 ## Tecnologias
 
@@ -73,7 +74,8 @@ Não há instalação nem etapa de build.
 | O que mudar | Onde procurar no `index.html` |
 | --- | --- |
 | Cores | Bloco `:root` no início do `<style>` |
-| Número do WhatsApp | Link `https://wa.me/message/VXHAGG4N7LURD1` (aparece em vários pontos) |
+| Número do WhatsApp do orçamento | `window.VCRK_WA_NUMBER` no script do formulário (seção `id="orcamento"`) |
+| Link do WhatsApp (botões) | Link `https://wa.me/message/VXHAGG4N7LURD1` (aparece em vários pontos) |
 | Instagram e LinkedIn | Seção `id="contato"` |
 | E-mail | `vitor.cunha@vcrk.com.br` (link e botão "Copiar") |
 | Endereço | Seção `id="localizacao"` |
