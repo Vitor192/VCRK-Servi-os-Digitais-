@@ -553,6 +553,14 @@ textarea.input { min-height: 140px; resize: vertical; line-height: 1.5; }
 .sum { white-space: pre-wrap; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 12px; padding: 16px; font-size: .92rem; color: var(--fg); overflow-wrap: anywhere; line-height: 1.55; }
 .orc-toast { position: fixed; left: 50%; transform: translateX(-50%); z-index: 80; bottom: calc(90px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: .9rem; font-weight: 500; max-width: calc(100% - 32px); }
 @media (prefers-reduced-motion: reduce) { .orc-pane.is-active, .orc-result { animation: none; } .orc-progress i { transition: none; } }
+
+/* Seção de soluções */
+.checks.feat { gap: 14px; }
+.checks.feat li span { color: var(--muted); font-size: .96rem; line-height: 1.55; }
+.checks.feat li span b { color: var(--fg); font-weight: 700; }
+.audience > p:not(.tag) { line-height: 1.55; }
+.cta-act { display: grid; gap: 12px; justify-items: start; }
+@media (min-width: 860px) { .audience.ai .cta-act { justify-self: end; } }
 </style>
 
 </head>
@@ -634,52 +642,44 @@ textarea.input { min-height: 140px; resize: vertical; line-height: 1.5; }
   <section class="band alt" id="sobre">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">Sobre a VCRK</p>
-        <h2 class="h2">Soluções para o seu negócio funcionar melhor.</h2>
-      </div>
-      <div class="about-text">
-        <p>A <strong>VCRK Soluções Digitais</strong> surgiu para trazer soluções para o seu negócio. Seja você comerciante, prestador de serviço ou uma empresa que quer automatizar tarefas, a ideia é a mesma: deixar a operação organizada e a sua marca visível onde os clientes procuram.</p>
+        <p class="eyebrow">Soluções VCRK</p>
+        <h2 class="h2">O que oferecemos para a sua empresa crescer com estrutura.</h2>
+        <p class="lead">Desenvolvemos a base tecnológica e o posicionamento digital que o seu negócio precisa para transmitir autoridade, organizar a operação e transformar visitantes em clientes todos os dias.</p>
       </div>
       <div class="audiences">
         <article class="audience">
-          <p class="tag">Para o comércio</p>
-          <h3>Comércio varejista</h3>
-          <p>Se você precisa organizar os dados da empresa e fechar contratos B2B de forma digital, está no lugar certo. Resolvemos estas demandas:</p>
-          <ul class="checks">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Lista de fornecedores</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Lista de clientes</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Montagem da lista de compras</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Formas digitais de fechar contratos no segmento B2B</span></li>
+          <p class="tag">Engenharia e automação</p>
+          <h3>Sites e Sistemas sob Medida</h3>
+          <p>Criamos plataformas rápidas, seguras e pensadas para vender ou automatizar o atendimento e a gestão da sua operação:</p>
+          <ul class="checks feat">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Sites Institucionais:</b> Sua vitrine digital oficial. Apresenta a história, os serviços e os diferenciais da sua empresa com design profissional para gerar confiança imediata em quem pesquisa sua marca.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Landing Pages de Alta Conversão:</b> Páginas focadas em um único objetivo: transformar cliques de anúncios ou redes sociais em pedidos de orçamento e vendas diretas.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Lojas Online (E-commerce):</b> Sua operação vendendo 24 horas por dia com catálogo organizado, meios de pagamento integrados e gestão simples de pedidos.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Sistemas de Agendamento:</b> Agenda online automática onde o cliente escolhe o horário disponível, reduzindo faltas e eliminando a perda de tempo no WhatsApp.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Sistemas de Gerenciamento de Estoque:</b> Controle total de entradas, saídas e reposição de produtos em tempo real para evitar furos e prejuízos.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Soluções Personalizadas:</b> Desenvolvimento de ferramentas e sistemas exclusivos criados para resolver gargalos específicos da rotina da sua empresa.</span></li>
           </ul>
         </article>
         <article class="audience">
-          <p class="tag">Para quem presta serviço</p>
-          <h3>Prestadores de serviço</h3>
-          <p>Realizamos o seu posicionamento digital e reestruturamos todo o seu segmento no digital, para o seu serviço ser divulgado nas principais redes.</p>
-          <p class="subhead">O que configuramos</p>
-          <ul class="checks">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Posicionamento no Instagram</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Perfil comercial no WhatsApp</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Perfil da Empresa no Google</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Catálogo de serviços no WhatsApp Business</span></li>
-          </ul>
-          <p class="subhead">Segmentos atendidos</p>
-          <ul class="chips">
-            <li>Pedreiro</li><li>Mecânico</li><li>Video maker</li><li>Barbeiro</li><li>Bartender</li>
-            <li>Buffet</li><li>Lava jato</li><li>Estética automotiva</li><li>Decoração</li><li>e outros segmentos</li>
+          <p class="tag">Visibilidade e decisão</p>
+          <h3>Posicionamento Digital e Análise de Dados</h3>
+          <p>Não basta ter uma boa estrutura se o cliente não encontra você ou se você toma decisões no escuro. Preparamos sua marca para atrair e gerir com clareza:</p>
+          <ul class="checks feat">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Posicionamento Estratégico no Instagram:</b> Reestruturação completa do perfil (bio, destaques, identidade e palavras-chave) para que sua empresa seja encontrada nas buscas e passe autoridade no primeiro olhar.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Presença no Google (Perfil da Empresa):</b> Cadastro e otimização estratégica para colocar seu negócio no mapa e no topo das pesquisas locais quando o cliente procurar pelo seu serviço.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Configuração de WhatsApp Business:</b> Estruturação profissional do seu canal de vendas com catálogo, mensagens rápidas, etiquetas e automação de boas-vindas para não perder nenhum contato.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><b>Análise de Dados com Power BI:</b> Painéis visuais e interativos que reúnem todos os números da sua empresa em um só lugar, facilitando o controle financeiro, comercial e a tomada de decisão rápida.</span></li>
           </ul>
         </article>
         <article class="audience ai">
           <div class="ai-head">
-            <p class="tag">Automação com IA</p>
-            <h3>Automação de IA (LLM) para sua empresa</h3>
-            <p>Colocamos a inteligência artificial para trabalhar na rotina do seu negócio e tiramos do seu caminho as tarefas repetitivas.</p>
+            <p class="tag">Projeto sob medida</p>
+            <h3>Não sabe qual solução aplicar primeiro no seu negócio?</h3>
+            <p>Analisamos o momento atual da sua empresa e desenhamos o plano exato entre site, sistema, posicionamento ou dados para destravar seus resultados.</p>
           </div>
-          <ul class="checks">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Ler e-mails automaticamente</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Enviar cobranças por mensagem</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Outras funcionalidades sob medida para a sua rotina</span></li>
-          </ul>
+          <div class="cta-act">
+            <a class="btn btn-primary" href="https://wa.me/5522981513033?text=Ol%C3%A1%21%20Quero%20solicitar%20um%20diagn%C3%B3stico%20para%20a%20minha%20empresa." target="_blank" rel="noopener">Solicitar diagnóstico →</a>
+          </div>
         </article>
       </div>
     </div>
