@@ -17,7 +17,7 @@ A VCRK ajuda negócios a se organizar e a aparecer no digital. O site atende tr�
 ## Seções da página
 
 1. **Início:** apresentação, botões de WhatsApp e "Ver como funciona"
-2. **Sobre:** os três públicos atendidos
+2. **Soluções (Sobre):** sites e sistemas sob medida, posicionamento digital e análise de dados, com chamada para diagnóstico pelo WhatsApp
 3. **Fundador:** Vitor Cunha, formação e experiência
 4. **Como funciona:** reunião de alinhamento, proposta e planejamento, assinatura do contrato, execução no prazo determinado e entrega no prazo previsto
 5. **Orçamento:** formulário em 3 etapas (dados, soluções e escopo); o pedido abre no WhatsApp da VCRK com a mensagem pronta
